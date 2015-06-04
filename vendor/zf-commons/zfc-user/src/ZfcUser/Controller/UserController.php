@@ -199,7 +199,6 @@ class UserController extends AbstractActionController
         $redirectUrl = $this->url()->fromRoute(static::ROUTE_REGISTER)
             . ($redirect ? '?redirect=' . rawurlencode($redirect) : '');
         $prg = $this->prg($redirectUrl, true);
-
         if ($prg instanceof Response) {
             return $prg;
         } elseif ($prg === false) {

@@ -86,12 +86,12 @@ class ModuleOptions extends AbstractOptions implements
     /**
      * @var bool
      */
-    protected $enableUsername = false;
+    protected $enableUsername = true;
 
     /**
      * @var bool
      */
-    protected $enableDisplayName = false;
+    protected $enableDisplayName = true;
 
     /**
      * @var bool

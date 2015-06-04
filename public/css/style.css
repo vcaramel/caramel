@@ -1,6 +1,14 @@
 body {
     padding-top: 60px;
-    padding-bottom: 40px;
+    font-family: "Open Sans", sans-serif;
+}
+body .container-fluid {
+    background-color: #f6f6f6;
+    border-bottom: solid 1px #e0e0e0;
+}
+footer .container {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 /* latin-ext */
 @font-face {
@@ -84,8 +92,13 @@ h2{
     z-index: 0;
     background-color: black;
 }
+.vc-body {
+    margin-top:60px;
+    margin-bottom: 35px;
+}
 .next-to-carousel {
-    margin-top: 644px;
+    margin-top: 620px;
+    margin-bottom: 50px;
 }
 @media (min-width: 768px) {
     #nav-bar-search-bar-service-name {
@@ -114,3 +127,18 @@ h2{
         margin-left: 15px;
     }
 }
+/* Login form*/
+.panel-default .panel-body .panel-title-inside-panel-body {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: "PT Serif", serif;
+}
+.zend_form input{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.zend_form dd{
+    margin-bottom: 15px;
+}
+/* End Login form*/

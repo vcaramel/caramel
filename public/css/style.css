@@ -102,29 +102,17 @@ h2{
 }
 @media (min-width: 768px) {
     #nav-bar-search-bar-service-name {
-        width: 200px;
-    }
-    #nav-bar-search-bar-location {
-        width: 80px;
-        margin-left: 5px;
+        width: 300px;
     }
 }
 @media (min-width: 992px) {
     #nav-bar-search-bar-service-name {
-        width: 300px;
-    }
-    #nav-bar-search-bar-location {
-        width: 110px;
-        margin-left: 12px;
+        width: 400px;
     }
 }
 @media (min-width: 1200px) {
     #nav-bar-search-bar-service-name {
-        width: 300px;
-    }
-    #nav-bar-search-bar-location {
-        width: 110px;
-        margin-left: 15px;
+        width: 600px;
     }
 }
 /* Login form*/

@@ -28,9 +28,7 @@ class Base extends ProvidesEventsForm
                 'label' => 'Email',
             ),
             'attributes' => array(
-                'type' => 'text',
-                'class' => 'form-control',
-                'placeholder' => 'email@example.com'
+                'type' => 'text'
             ),
         ));
 
@@ -50,9 +48,7 @@ class Base extends ProvidesEventsForm
                 'label' => 'Password',
             ),
             'attributes' => array(
-                'type' => 'password',
-                'class' => 'form-control',
-                'placeholder' => '********'
+                'type' => 'password'
             ),
         ));
 
@@ -62,9 +58,7 @@ class Base extends ProvidesEventsForm
                 'label' => 'Password Verify',
             ),
             'attributes' => array(
-                'type' => 'password',
-                'class' => 'form-control',
-                'placeholder' => '********'
+                'type' => 'password'
             ),
         ));
 

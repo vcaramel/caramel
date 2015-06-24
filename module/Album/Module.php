@@ -36,7 +36,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         return array(
             'factories' => array(
-                'Album\Model\AlbumTable' =>  function(ServiceManager $sm) {
+                /*'Album\Model\AlbumTable' =>  function(ServiceManager $sm) {
                     $tableGateway = $sm->get('AlbumTableGateway');
                     $table = new AlbumTable($tableGateway);
                     return $table;
@@ -46,7 +46,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Album());
                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
-                },
+                },*/
             ),
         );
     }

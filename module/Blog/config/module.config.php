@@ -6,14 +6,40 @@
  * Time: 17:05
  */
 return array(
+    'db' => array(
+        'driver'         => 'Pdo',
+        'username'       => 'root',  //edit this
+        'password'       => 'root',  //edit this
+        'dsn'            => 'mysql:dbname=caramel;host=localhost',
+        'driver_options' => array(
+            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+        )
+    ),
     'service_manager' => array(
-        'invokables' => array(
-            'Blog\Service\PostServiceInterface' => 'Blog\Service\PostService'
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
+            'Blog\Mapper\PostMapperInterface'   => 'Blog\Factory\ZendDbSqlMapperFactory',
+            'Blog\Service\PostServiceInterface' => function ($sm) {
+                return new Blog\Service\PostService(
+                    $sm->get('Blog\Mapper\PostMapperInterface')
+                );
+            },
         )
     ),
     'controllers' => array(
         'factories' => array(
-            'Blog\Controller\List' => 'Blog\Factory\ListControllerFactory'
+            'Blog\Controller\List' => 'Blog\Factory\ListControllerFactory',
+            'Blog\Controller\Write'=> 'Blog\Factory\WriteControllerFactory',
+            'Blog\Controller\Delete'=> 'Blog\Factory\DeleteControllerFactory',
+
+
+            //it's another way to user factory without  creating a factory class
+            /*'Blog\Controller\List' => function ($sm)
+            {
+                $realServiceLocator = $sm->getServiceLocator();
+                $postService        = $realServiceLocator->get('Blog\Service\PostServiceInterface');
+                return new Blog\Controller\ListController($postService);
+            }*/
         )
     ),
     'view_manager' => array(
@@ -37,6 +63,57 @@ return array(
                         'controller' => 'Blog\Controller\List',
                         'action'     => 'index',
                     )
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                    'detail' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/:id',
+                            'defaults' => array(
+                                'action' => 'detail'
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        )
+                    ),
+                    'add' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route'    => '/add',
+                            'defaults' => array(
+                                'controller' => 'Blog\Controller\Write',
+                                'action'     => 'add'
+                            )
+                        )
+                    ),
+                    'edit' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/edit/:id',
+                            'defaults' => array(
+                                'controller' => 'Blog\Controller\Write',
+                                'action'     => 'edit'
+                            ),
+                            'constraints' => array(
+                                'id' => '\d+'
+                            )
+                        )
+                    ),
+                    'delete' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/delete/:id',
+                            'defaults' => array(
+                                'controller' => 'Blog\Controller\Delete',
+                                'action'     => 'delete'
+                            ),
+                            'constraints' => array(
+                                'id' => '\d+'
+                            )
+                        )
+                    ),
                 )
             )
         )

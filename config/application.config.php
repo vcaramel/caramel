@@ -4,6 +4,7 @@ return array(
     'modules' => array(
         'Application',
         'Blog',
+        'Album',
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcBase',
